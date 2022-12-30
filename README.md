@@ -1,1 +1,1 @@
-# college-guide-project
+# GUIDE TO FINDING THE RIGHT COLLEGE PROJECT
