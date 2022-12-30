@@ -2705,65 +2705,6 @@ tuit.head()
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    FileNotFoundError                         Traceback (most recent call last)
-
-    /var/folders/8r/l9bhr01n5vg776r7zxhjcf3c0000gn/T/ipykernel_56480/2846928259.py in <module>
-    ----> 1 tuit = pd.read_csv('/Users/stephaniefissel/Desktop/historical_tuition1.csv')
-          2 tuit.head()
-
-
-    ~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py in parser_f(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, tupleize_cols, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)
-        700                     skip_blank_lines=skip_blank_lines)
-        701 
-    --> 702         return _read(filepath_or_buffer, kwds)
-        703 
-        704     parser_f.__name__ = name
-
-
-    ~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py in _read(filepath_or_buffer, kwds)
-        427 
-        428     # Create the parser.
-    --> 429     parser = TextFileReader(filepath_or_buffer, **kwds)
-        430 
-        431     if chunksize or iterator:
-
-
-    ~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py in __init__(self, f, engine, **kwds)
-        893             self.options['has_index_names'] = kwds['has_index_names']
-        894 
-    --> 895         self._make_engine(self.engine)
-        896 
-        897     def close(self):
-
-
-    ~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py in _make_engine(self, engine)
-       1120     def _make_engine(self, engine='c'):
-       1121         if engine == 'c':
-    -> 1122             self._engine = CParserWrapper(self.f, **self.options)
-       1123         else:
-       1124             if engine == 'python':
-
-
-    ~/anaconda3/lib/python3.7/site-packages/pandas/io/parsers.py in __init__(self, src, **kwds)
-       1851         kwds['usecols'] = self.usecols
-       1852 
-    -> 1853         self._reader = parsers.TextReader(src, **kwds)
-       1854         self.unnamed_cols = self._reader.unnamed_cols
-       1855 
-
-
-    pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader.__cinit__()
-
-
-    pandas/_libs/parsers.pyx in pandas._libs.parsers.TextReader._setup_parser_source()
-
-
-    FileNotFoundError: [Errno 2] File b'/Users/stephaniefissel/Desktop/historical_tuition1.csv' does not exist: b'/Users/stephaniefissel/Desktop/historical_tuition1.csv'
-
-
-
 ```python
 tuition = tuit[~tuit['tuition_type'].isin(['All Constant', '4 Year Constant', '2 Year Constant', 'All Current', '2 Year Current'])]
 tuition1 = tuition[~tuition['year'].isin(['1985-86'])]
